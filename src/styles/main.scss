@@ -1,0 +1,238 @@
+@use './abstracts' as *;
+
+.skip-to-content {
+  position: absolute;
+  z-index: 99999999;
+  inset: -100vh auto auto 0;
+  display: grid;
+  place-items: center;
+  padding: 1em;
+  background-color: white;
+  border: 1em double black;
+
+  &:focus{
+    inset: 0 auto auto 0;
+  }
+}
+
+html {
+  scroll-padding-top: 12vh;
+}
+
+body {
+  background-image: url('../public/images/Simple-Shiny.svg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+header {
+  position: fixed;
+  min-width: 100%;
+  min-height: 4rem;
+  height: 10vh;
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,.25);
+  background-color: white;
+  display: flex;
+  align-items: center;
+  z-index: 99999;
+
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(13px);
+  -webkit-backdrop-filter: blur(13px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+
+  h1 {
+    margin-inline-start: 0.5em;
+    text-transform: uppercase;
+
+    @include max(small){
+      font-size: 1.5rem;
+    }
+  }
+
+  #hamburger {
+    display: none;
+    color: black;
+    background-color: transparent;
+    border: none;
+    margin-inline-start: auto;
+    margin-inline-end: 2em;
+    min-width: 44px;
+    min-height: 44px;
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    @include max(small){
+      display: block;
+    }
+  }
+
+  nav {
+    margin-inline-start: auto;
+
+    ul {
+      display: flex;
+
+      @include max(small){
+        display: block;
+      }
+    }
+
+    a {
+      display: block;
+      padding: 1em 2em;
+      transition: all 100ms ease-out;
+      text-transform: capitalize;
+      font-weight: bold;
+
+      &:hover {
+        background-color: black;
+        color: white;
+      }
+
+      @include max(small){
+        margin-block-start: 3rem;
+        padding: 3em;
+      }
+    }
+
+    &.open{
+      @include max(small){
+        transform: translateX(0);
+      }
+    }
+
+    @include max(small){
+      position: absolute;
+      inset: 0 auto 0 0;
+      width: 75vw;
+      height: 100vh;
+
+      background-color: white;
+
+      transform: translateX(-100vw);
+      transition: transform 0.3s ease;
+    }
+  }
+
+  @include min(large) {
+    padding-inline: 8%;
+  }
+}
+
+main {
+  padding-block-start: 10vh;
+  min-height: 100vh;
+  
+  .hero {
+    min-height: 60vh;
+    background-color: gray;
+    background-image: url('../public/images/heros/hero-image.webp');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center top;
+    margin-inline: auto;
+    border-radius: 0 0 .7em .7em;
+
+    @include min(large){
+      max-width: 1000px;
+    }
+  }
+
+  .explore__title {
+    font-weight: bold;
+    text-align: center;
+    text-transform: capitalize;
+    padding-block: 1em;
+    margin-block: 1em;
+
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(13px);
+    -webkit-backdrop-filter: blur(13px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+  }
+
+  .restaurant__list {
+    display: grid;
+    place-items: center;
+    gap: 2rem;
+    max-width: 80%;
+    margin-inline: auto;
+    padding-block-end: 10rem;
+
+    @include min(medium){
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include min(large){
+      max-width: 80%;
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .restaurant__item {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(13px);
+    -webkit-backdrop-filter: blur(13px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+  }
+
+  .card__header {
+    position: relative;
+
+    &__location {
+      position: absolute;
+      background-color: #E3D0E3;
+      padding: .5em 2em;
+      inset: 1rem auto auto 1rem;
+      font-weight: bold;
+      border-radius: 5rem;
+
+      box-shadow: 12px 11px 49px 2px rgba(0,0,0,0.64);
+      -webkit-box-shadow: 12px 11px 49px 2px rgba(0,0,0,0.64);
+      -moz-box-shadow: 12px 11px 49px 2px rgba(0,0,0,0.64);
+    }
+
+    &__image {
+      border-radius: 1rem 1rem 0 0;
+    }
+  }
+
+  .card__body {
+    padding: 1rem;
+
+    &__rating {
+      font-weight: bold;
+      margin-block-end: .8em;
+    }
+
+    &__name {
+      font-weight: bold;
+      font-size: 1.2rem;
+      margin-block-end: .5em;
+    }
+
+    &__description {
+      font-size: .7rem;
+    }
+  }
+}
+
+footer {
+  text-align: center;
+  border-top: 2px solid black;
+  padding: 1em;
+
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(13px);
+  -webkit-backdrop-filter: blur(13px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
