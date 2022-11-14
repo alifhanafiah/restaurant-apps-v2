@@ -11,11 +11,11 @@ burger.addEventListener('click', () => {
 });
 
 // take data for restaurant list
-const restaurants = data.restaurants;
+const { restaurants } = data;
 
 let output = '';
 
-for (let restaurant of restaurants) {
+for (const restaurant of restaurants) {
   output += `
     <div class="restaurant__item">
       <div class="card__header">
