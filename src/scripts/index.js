@@ -1,5 +1,5 @@
 import 'regenerator-runtime'; /* for async await transpile */
-
+import swRegister from './utils/sw-register';
 import App from './views/app';
 
 import '../styles/main.scss';
@@ -16,4 +16,5 @@ window.addEventListener('hashchange', () => {
 
 window.addEventListener('load', () => {
   app.renderPage();
+  swRegister();
 });
