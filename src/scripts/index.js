@@ -1,5 +1,5 @@
 import 'regenerator-runtime'; /* for async await transpile */
-import data from '../DATA.json';
+
 import App from './views/app';
 
 import '../styles/main.scss';
@@ -10,34 +10,43 @@ const app = new App({
   content: document.querySelector('#main'),
 });
 
-// take data for restaurant list
-const { restaurants } = data;
+window.addEventListener('hashchange', () => {
+  app.renderPage();
+});
 
-let output = '';
+window.addEventListener('load', () => {
+  app.renderPage();
+});
 
-for (const restaurant of restaurants) {
-  output += `
-    <div class="restaurant__item">
-      <div class="card__header">
-        <div class="card__header__location">${restaurant.city}</div>
-        <img
-          class="card__header__image"
-          src=${restaurant.pictureId}
-          alt=""
-        />
-      </div>
-      <div class="card__body">
-        <div class="card__body__rating">
-          Rating: <span id="rating">${restaurant.rating}</span>
-        </div>
-        <div class="card__body__name">${restaurant.name}</div>
-        <div class="card__body__description">
-          ${restaurant.description}
-        </div>
-      </div>
-    </div>
-  `;
-}
+// import data from '../DATA.json';
+// // take data for restaurant list
+// const { restaurants } = data;
 
-// put cards on document
-document.querySelector('.restaurant__list').innerHTML = output;
+// let output = '';
+
+// for (const restaurant of restaurants) {
+//   output += `
+//     <div class="restaurant__item">
+//       <div class="card__header">
+//         <div class="card__header__location">${restaurant.city}</div>
+//         <img
+//           class="card__header__image"
+//           src=${restaurant.pictureId}
+//           alt=""
+//         />
+//       </div>
+//       <div class="card__body">
+//         <div class="card__body__rating">
+//           Rating: <span id="rating">${restaurant.rating}</span>
+//         </div>
+//         <div class="card__body__name">${restaurant.name}</div>
+//         <div class="card__body__description">
+//           ${restaurant.description}
+//         </div>
+//       </div>
+//     </div>
+//   `;
+// }
+
+// // put cards on document
+// document.querySelector('.restaurant__list').innerHTML = output;
