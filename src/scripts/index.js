@@ -1,13 +1,13 @@
 import 'regenerator-runtime'; /* for async await transpile */
 import data from '../DATA.json';
+import App from './views/app';
+
 import '../styles/main.scss';
 
-// responsive burger menu
-const burger = document.querySelector('#hamburger');
-const nav = document.querySelector('nav');
-
-burger.addEventListener('click', () => {
-  nav.classList.toggle('open');
+const app = new App({
+  button: document.querySelector('#hamburger'),
+  drawer: document.querySelector('nav'),
+  content: document.querySelector('#main'),
 });
 
 // take data for restaurant list
