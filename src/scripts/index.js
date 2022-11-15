@@ -1,4 +1,5 @@
 import 'regenerator-runtime'; /* for async await transpile */
+import './components/AppFooter';
 import swRegister from './utils/sw-register';
 import App from './views/app';
 
