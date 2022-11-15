@@ -287,6 +287,27 @@ main {
       }
     }
   }
+
+  .like {
+    width: 55px;
+    height: 55px;
+    display: grid;
+    place-items: center;
+    background-color: navy;
+    box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+    
+    position: fixed;
+    bottom: 2rem;
+    right: 3rem;
+    border-radius: 50%;
+    border: 0;
+    
+    font-size: 1.5rem;
+    color: white;
+    cursor: pointer;
+
+    z-index: 9999;
+  }
 }
 
 footer {
