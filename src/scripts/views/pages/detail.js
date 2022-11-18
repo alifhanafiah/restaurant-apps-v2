@@ -7,7 +7,7 @@ const Detail = {
   async render() {
     return `
       <div class="hero"></div>
-      <h2 class="explore__title">Detail of Restaurant</h2>
+      <h2 class="explore__title" id="main-content" tabindex="0">Detail of Restaurant</h2>
       <div class="restaurant__detail" id="restaurant"></div>
       <div id="likeButtonContainer"></div>
     `;
