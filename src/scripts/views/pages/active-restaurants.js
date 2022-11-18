@@ -7,6 +7,7 @@ const ActiveRestaurants = {
       <div class="hero"></div>
       <h2 class="explore__title" id="main-content" tabindex="0">Explore Restaurant</h2>
       <div class="restaurant__list" id="restaurants"></div>
+      <div class="lds-facebook"><div></div><div></div><div></div></div>
     `;
   },
 
@@ -16,6 +17,9 @@ const ActiveRestaurants = {
     restaurants.forEach((restaurant) => {
       restaurantsContainer.innerHTML += createRestaurantItemTemplate(restaurant);
     });
+
+    const loader = document.querySelector('.lds-facebook');
+    loader.style.display = 'none';
   },
 };
 

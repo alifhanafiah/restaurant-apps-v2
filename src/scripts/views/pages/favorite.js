@@ -7,6 +7,7 @@ const Favorite = {
       <div class="hero"></div>
       <h2 class="explore__title" id="main-content" tabindex="0">Favorited Restaurant</h2>
       <div class="restaurant__list" id="restaurants"></div>
+      <div class="lds-facebook"><div></div><div></div><div></div></div>
     `;
   },
 
@@ -22,6 +23,9 @@ const Favorite = {
         restaurantsContainer.innerHTML += createRestaurantItemTemplate(restaurant);
       });
     }
+
+    const loader = document.querySelector('.lds-facebook');
+    loader.style.display = 'none';
   },
 };
 

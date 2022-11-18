@@ -9,6 +9,7 @@ const Detail = {
       <div class="hero"></div>
       <h2 class="explore__title" id="main-content" tabindex="0">Detail of Restaurant</h2>
       <div class="restaurant__detail" id="restaurant"></div>
+      <div class="lds-facebook"><div></div><div></div><div></div></div>
       <div id="likeButtonContainer"></div>
     `;
   },
@@ -30,6 +31,9 @@ const Detail = {
         description: restaurant.description,
       },
     });
+
+    const loader = document.querySelector('.lds-facebook');
+    loader.style.display = 'none';
   },
 };
 
