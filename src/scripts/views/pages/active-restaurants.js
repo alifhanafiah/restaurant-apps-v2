@@ -5,7 +5,7 @@ const ActiveRestaurants = {
   async render() {
     return `
       <div class="hero"></div>
-      <h2 class="explore__title" id="main-content" tabindex="0">Explore Restaurant</h2>
+      <h2 class="explore__title">Explore Restaurant</h2>
       <div class="restaurant__list" id="restaurants"></div>
       <div class="lds-facebook"><div></div><div></div><div></div></div>
     `;

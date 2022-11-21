@@ -31,7 +31,7 @@ class App {
     const skipLinkElem = document.querySelector('.skip-to-content');
     skipLinkElem.addEventListener('click', (event) => {
       event.preventDefault();
-      document.querySelector('#main-content').scrollIntoView({ behavior: 'smooth' }).focus();
+      document.querySelector('#main').scrollIntoView({ behavior: 'smooth' }).focus();
     });
   }
 }
