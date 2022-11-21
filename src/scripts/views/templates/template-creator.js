@@ -19,16 +19,6 @@ const createRestaurantDetailTemplate = (restaurant) => `
       <div class="detail__menu">
         ${restaurant.menus.drinks.map((drink) => `<div class="detail__menu--name">${drink.name}</div>`).join('')}
       </div>
-      <h3>Customer Reviews</h3>
-      <div class="detail__reviews">
-        ${restaurant.customerReviews.map((review) => `
-            <div class="detail__reviews--card">
-              <h5>${review.name}</h5>
-              <span class="detail__reviews--card__date">${review.date}</span>
-              <p>${review.review}</p>
-            </div>
-          `).join('')}
-      </div>
     </div>
   </div>
 `;
@@ -55,6 +45,18 @@ const createRestaurantItemTemplate = (restaurant) => `
   </div>
 `;
 
+const createCustomerReviewsTemplate = (restaurant) => `
+  <div class="detail__reviews">
+    ${restaurant.customerReviews.map((review) => `
+        <div class="detail__reviews--card">
+          <h5>${review.name}</h5>
+          <span class="detail__reviews--card__date">${review.date}</span>
+          <p>${review.review}</p>
+        </div>
+      `).join('')}
+  </div>
+`;
+
 const createLikeButtonTemplate = () => `
   <button aria-label="like this movie" id="likeButton" class="like">
     <i class="fa-regular fa-heart" aria-hidden="true"></i>
@@ -70,6 +72,7 @@ const createLikedButtonTemplate = () => `
 export {
   createRestaurantItemTemplate,
   createRestaurantDetailTemplate,
+  createCustomerReviewsTemplate,
   createLikeButtonTemplate,
   createLikedButtonTemplate,
 };

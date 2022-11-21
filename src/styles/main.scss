@@ -189,6 +189,12 @@ main {
     margin-inline: auto;
   }
 
+  #add-comment {
+    max-width: 80%;
+    margin-inline: auto;
+    margin-block-start: 2rem;
+  }
+
   .card__header {
     position: relative;
 
@@ -272,6 +278,48 @@ main {
   .detail__reviews {
     margin-block-end: 2em;
 
+    &__name {
+      font-family: inherit;
+      min-width: 100%;
+      background-color: #E3D0E3;
+      border: none;
+      border-radius: .5em;
+      border-left: 10px solid #C8A2C8;
+      padding-inline: 3em;
+      margin-block-end: 0.5em;
+      box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+    }
+
+    &__add {
+      font-family: inherit;
+      min-width: 100%;
+      background-color: #E3D0E3;
+      border: none;
+      border-radius: .5em;
+      border-left: 10px solid #C8A2C8;
+      padding: 3em;
+      margin-block-end: 0.5em;
+      box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+    }
+
+    &__submit {
+      font-family: inherit;
+      background-color: #E3D0E3;
+      border: none;
+      border-radius: .5em;
+      padding: 1em;
+      font-weight: bold;
+      box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+      transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+      transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+      transition-duration: 150ms;
+
+      &:hover {
+        cursor: pointer;
+        transform: scale(1.1);
+      }
+    }
+
     &--card {
       background-color: #E3D0E3;
       border-radius: .5em;
@@ -285,6 +333,28 @@ main {
         color:rgba(0, 0, 0, 0.5);
       }
     }
+  }
+
+  #add-review {
+    max-width: 80%;
+    margin-inline: auto;
+    margin-block-start: 2rem;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(13px);
+    -webkit-backdrop-filter: blur(13px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+
+    padding: 2em;
+
+    @include min(large){
+      padding-inline: 10em;
+    }
+  }
+
+  .add-review__form {
+    margin-block-end: 2rem;
   }
 
   .like {

@@ -1,7 +1,7 @@
 import RestaurantSource from '../../data/restaurant-source';
 import UrlParser from '../../routes/url-parser';
 import LikeButtonInitiator from '../../utils/like-button-initiator';
-import { createRestaurantDetailTemplate } from '../templates/template-creator';
+import { createCustomerReviewsTemplate, createRestaurantDetailTemplate } from '../templates/template-creator';
 
 const Detail = {
   async render() {
@@ -9,6 +9,15 @@ const Detail = {
       <div class="hero"></div>
       <h2 class="explore__title">Detail of Restaurant</h2>
       <div class="restaurant__detail" id="restaurant"></div>
+      <div id="add-review">
+        <h3>Customer Reviews</h3>
+        <form class="add-review__form">
+          <input type="text" class="detail__reviews__name" placeholder="Who are you ?" required/>
+          <input type="text" class="detail__reviews__add" placeholder="Write something..." required/>
+          <button class="detail__reviews__submit" type="submit">Post Comment</button>
+        </form>
+        <div id="comments"></div>
+      </div>
       <div class="lds-facebook"><div></div><div></div><div></div></div>
       <div id="likeButtonContainer"></div>
     `;
@@ -19,6 +28,27 @@ const Detail = {
     const restaurant = await RestaurantSource.detailRestaurant(url.id);
     const restaurantContainer = document.querySelector('#restaurant');
     restaurantContainer.innerHTML = createRestaurantDetailTemplate(restaurant);
+
+    const nameInput = document.querySelector('.detail__reviews__name');
+    const reviewInput = document.querySelector('.detail__reviews__add');
+    const addReviewContainer = document.querySelector('.add-review__form');
+
+    addReviewContainer.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const review = {
+        id: restaurant.id,
+        name: nameInput.value,
+        review: reviewInput.value,
+      };
+
+      RestaurantSource.addReview(review);
+      location.reload();
+    });
+
+    const restaurantReviews = await RestaurantSource.detailRestaurant(url.id);
+    const commentsContainer = document.querySelector('#comments');
+    commentsContainer.innerHTML = createCustomerReviewsTemplate(restaurantReviews);
 
     LikeButtonInitiator.init({
       likeButtonContainer: document.querySelector('#likeButtonContainer'),
