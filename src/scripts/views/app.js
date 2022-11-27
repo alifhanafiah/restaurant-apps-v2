@@ -1,3 +1,4 @@
+import Swal from 'sweetalert2';
 import routes from '../routes/routes';
 import UrlParser from '../routes/url-parser';
 import DrawerInitiator from '../utils/drawer-initiator';
@@ -24,8 +25,17 @@ class App {
   async renderPage() {
     const url = UrlParser.parseActiveUrlWithCombiner();
     const page = routes[url];
-    this._content.innerHTML = await page.render();
-    await page.afterRender();
+
+    try {
+      this._content.innerHTML = await page.render();
+      await page.afterRender();
+    } catch (error) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Please try a valid route',
+      });
+    }
 
     // untuk skip to content
     const skipLinkElem = document.querySelector('.skip-to-content');
