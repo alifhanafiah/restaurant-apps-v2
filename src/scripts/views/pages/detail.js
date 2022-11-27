@@ -33,6 +33,11 @@ const Detail = {
     const reviewInput = document.querySelector('.detail__reviews__add');
     const addReviewContainer = document.querySelector('.add-review__form');
 
+    const commentsContainer = document.querySelector('#comments');
+
+    const restaurantDetailReviews = await RestaurantSource.detailRestaurant(url.id);
+    commentsContainer.innerHTML = createCustomerReviewsTemplate(restaurantDetailReviews);
+
     addReviewContainer.addEventListener('submit', async (e) => {
       e.preventDefault();
 
@@ -42,13 +47,13 @@ const Detail = {
         review: reviewInput.value,
       };
 
-      RestaurantSource.addReview(review);
-      location.reload();
-    });
+      const restaurantReviews = await RestaurantSource.addReview(review);
+      commentsContainer.innerHTML = createCustomerReviewsTemplate(restaurantReviews);
 
-    const restaurantReviews = await RestaurantSource.detailRestaurant(url.id);
-    const commentsContainer = document.querySelector('#comments');
-    commentsContainer.innerHTML = createCustomerReviewsTemplate(restaurantReviews);
+      // clear value
+      nameInput.value = '';
+      reviewInput.value = '';
+    });
 
     LikeButtonInitiator.init({
       likeButtonContainer: document.querySelector('#likeButtonContainer'),
